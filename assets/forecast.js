@@ -94,8 +94,8 @@ if ('geolocation' in navigator && 'querySelector' in document) {
         }
     };
     function forecast(position) {
-        var lat = position.coords.latitude,
-            lon = position.coords.longitude;
+        var lat = position.coords.latitude.toFixed(2),
+            lon = position.coords.longitude.toFixed(2);
         // Do we have this forecast in the cache?
         var data = get_forecast_cache(lat, lon);
         if (data) {
@@ -107,12 +107,12 @@ if ('geolocation' in navigator && 'querySelector' in document) {
     }
     function get_forecast_cache(lat, lon) {
         if ('localStorage' in window && window['localStorage'] !== null) {
-            var cache = localStorage["forecast_"+lat+','+lon];
+            var cache = localStorage["forecast"];
             if (cache) {
                 var json = JSON.parse(cache);
                 // Has the cache expired already?
-                if (json.expires > (new Date()).getTime()) {
-                    return json.data;                
+                if (json.expires > (new Date()).getTime() && json.lat == lat && json.lon == lon) {
+                    return json;
                 }
             }
         }
@@ -120,11 +120,10 @@ if ('geolocation' in navigator && 'querySelector' in document) {
     }
     function set_forecast_cache(json, lat, lon) {
         if ('localStorage' in window && window['localStorage'] !== null) {
-            var cache = {
-                expires: (new Date()).getTime()+1800000, // 30 minutes from now
-                data: json
-            }
-            localStorage["forecast_"+lat+','+lon] = JSON.stringify(cache);
+            json.expires = (new Date()).getTime()+1800000; // 30 minutes from now
+            json.lat = lat;
+            json.lon = lon;
+            localStorage["forecast"] = JSON.stringify(json);
         }
     }
     function get_forecast_ajax(lat, lon) {
