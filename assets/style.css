@@ -50,11 +50,11 @@ a,
 a:link,
 a:active,
 a:visited {
-    color: #68F;
+    color: #555;
 }
 a:hover,
 a:focus {
-    color: #69F;
+    color: #888;
 }
 footer {
     position: absolute;
