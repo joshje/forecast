@@ -77,7 +77,7 @@ var wrap = function(tag, text, opts) {
     return wrapped;
 };
 var message = function(msg) {
-    document.getElementById('message').innerHTML = msg;
+    document.getElementById('forecast').innerHTML = msg;
 };
   
 if ('geolocation' in navigator && 'querySelector' in document) {
