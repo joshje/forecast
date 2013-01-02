@@ -87,8 +87,8 @@ section[role=main] {
 .loading {
     display: inline-block;
     overflow: hidden;
-    width: 1em;
-    height: 1em;
+    width: 0.98em;
+    height: 0.98em;
     -webkit-animation: loading 1s linear 0s infinite;
 }
 @-webkit-keyframes loading {
