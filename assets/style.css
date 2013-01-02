@@ -42,7 +42,7 @@ p {
 h1 {
     margin: 0 0 0.2em;
     padding: 0;
-    font-size: 10rem;
+    font-size: 7em;
     line-height: 0.9;
     font-weight: normal;
 }
@@ -62,7 +62,7 @@ footer {
     left: 0;
     right: 0;
 }
-#forecast {
+section[role=main] {
     position: absolute;
     top: 50%;
     left: 0;
@@ -73,13 +73,13 @@ footer {
     padding-bottom: 1rem;
 }
 @media all and (min-width: 30em) {
-    #forecast {
+    section[role=main] {
         margin-top: -5em;
         font-size: 1.5rem;
     }
 }
 @media all and (min-width: 50em) {
-    #forecast {
+    section[role=main] {
         margin-top: -4em;
         font-size: 2rem;
     }
