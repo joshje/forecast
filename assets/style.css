@@ -62,7 +62,7 @@ footer {
     left: 0;
     right: 0;
 }
-#message {
+#forecast {
     position: absolute;
     top: 50%;
     left: 0;
@@ -73,13 +73,13 @@ footer {
     padding-bottom: 1rem;
 }
 @media all and (min-width: 30em) {
-    #message {
+    #forecast {
         margin-top: -5em;
         font-size: 1.5rem;
     }
 }
 @media all and (min-width: 50em) {
-    #message {
+    #forecast {
         margin-top: -4em;
         font-size: 2rem;
     }
