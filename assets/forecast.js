@@ -1,5 +1,16 @@
 var api_key = 'API_KEY_HERE',
-    timeout;
+    timeout,
+    weather_types = {
+        'Sunny': [113],
+        'Partly Cloudy': [116],
+        'Cloudy': [119,122],
+        'Foggy': [143,248,260],
+        'Scattered Showers': [176,185,263,293,299],
+        'Rainy': [266,281,284,296,302,305,308,311,314,3177,320,353,356,359,362,365],
+        'Snowy': [179,182,227,230,323,326,329,332,335,338,368,371],
+        'Hail': [350,374,377],
+        'Thundery': [200,386,389,392,395],
+    }
 var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
 var JSONP = (function(){
 	var counter = 0, head, window = this, config = {};
@@ -147,15 +158,26 @@ if ('geolocation' in navigator && 'querySelector' in document) {
     };
     function forecast_success(json, lat, lon) {
         clearTimeout(timeout);
-        var weather = json.data.weather[0],
-            forecast = weather.weatherDesc[0].value;
-        message(wrap('p', 'Tomorrows forecast is') + wrap('h1', forecast));
+        var forecast = forecast_lookup(json.data.weather[0].weatherCode);
+        if (!forecast) {
+            forecast = json.data.weather[0].weatherDesc[0].value
+        }
+        message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast));
         set_forecast_cache(json, lat, lon);
     };
     function forecast_error(err) {
         // AJAX request failed
         message(wrap('p', 'Don&rsquo;t panic, but we couldn&rsquo;t find any weather right now.') + wrap('p', wrap('a', 'Try again', {'href': '#', 'class': 'retry'})));
     };
+    function forecast_lookup(code) {
+        for (type in weather_types) {
+            for (c in weather_types[type]) {
+                if (code == weather_types[type][c]) {
+                    return type;
+                }
+            }
+        }
+    }
     // Refresh the forecast
     addEvent(document.getElementsByTagName('body')[0], 'click', function(e) {
         if (e.target.className.indexOf('retry') !== -1) {
