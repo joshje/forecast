@@ -28,7 +28,6 @@ body {
     font-weight: normal;
     text-decoration: none;
     text-rendering: optimizeLegibility;
-    white-space: nowrap;
     -webkit-font-feature-settings: "liga";
     -moz-font-feature-settings: "liga=1";
     -moz-font-feature-settings: "liga";
@@ -69,8 +68,7 @@ section[role=main] {
     right: 0;
     margin-top: -6em;
     font-size: 1.25rem;
-    padding-top: 1px;
-    padding-bottom: 1rem;
+    padding: 0 1em;
 }
 @media all and (min-width: 30em) {
     section[role=main] {
@@ -87,8 +85,8 @@ section[role=main] {
 .loading {
     display: inline-block;
     overflow: hidden;
-    width: 1em;
-    height: 1em;
+    width: 0.98em;
+    height: 0.98em;
     -webkit-animation: loading 1s linear 0s infinite;
 }
 @-webkit-keyframes loading {
