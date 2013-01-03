@@ -3,82 +3,82 @@ var api_key = '73047d0e9e151949122812',
     weather_types = {
         'Sunny': [113],
         'Partly Cloudy': [116],
-        'Cloudy': [119,122],
-        'Foggy': [143,248,260],
-        'Scattered Showers': [176,185,263,293,299],
-        'Rainy': [266,281,284,296,302,305,308,311,314,3177,320,353,356,359,362,365],
-        'Snowy': [179,182,227,230,323,326,329,332,335,338,368,371],
-        'Hail': [350,374,377],
-        'Thundery': [200,386,389,392,395],
-    }
+        'Cloudy': [119, 122],
+        'Foggy': [143, 248, 260],
+        'Scattered Showers': [176, 185, 263, 293, 299],
+        'Rainy': [266, 281, 284, 296, 302, 305, 308, 311, 314, 317, 320, 353, 356, 359, 362, 365],
+        'Snowy': [179, 182, 227, 230, 323, 326, 329, 332, 335, 338, 368, 371],
+        'Hail': [350, 374, 377],
+        'Thundery': [200, 386, 389, 392, 395]
+    };
 var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
 var JSONP = (function(){
-	var counter = 0, head, window = this, config = {};
-	function load(url, pfnError) {
-		var script = document.createElement('script'),
-			done = false;
-		script.src = url;
-		script.async = true;
+    var counter = 0, head, window = this, config = {};
+    function load(url, pfnError) {
+        var script = document.createElement('script'),
+            done = false;
+        script.src = url;
+        script.async = true;
  
-		var errorHandler = pfnError || config.error;
-		if ( typeof errorHandler === 'function' ) {
-			script.onerror = function(ex){
-				errorHandler({url: url, event: ex});
-			};
-		}
+        var errorHandler = pfnError || config.error;
+        if ( typeof errorHandler === 'function' ) {
+            script.onerror = function(ex){
+                errorHandler({url: url, event: ex});
+            };
+        }
 
-		script.onload = script.onreadystatechange = function() {
-			if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
-				done = true;
-				script.onload = script.onreadystatechange = null;
-				if ( script && script.parentNode ) {
-					script.parentNode.removeChild( script );
-				}
-			}
-		};
+        script.onload = script.onreadystatechange = function() {
+            if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+                done = true;
+                script.onload = script.onreadystatechange = null;
+                if ( script && script.parentNode ) {
+                    script.parentNode.removeChild( script );
+                }
+            }
+        };
 
-		if ( !head ) {
-			head = document.getElementsByTagName('head')[0];
-		}
-		head.appendChild( script );
-	}
-	function encode(str) {
-		return encodeURIComponent(str);
-	}
-	function jsonp(url, params, callback, callbackName) {
-		var query = (url||'').indexOf('?') === -1 ? '?' : '&', key;
+        if ( !head ) {
+            head = document.getElementsByTagName('head')[0];
+        }
+        head.appendChild( script );
+    }
+    function encode(str) {
+        return encodeURIComponent(str);
+    }
+    function jsonp(url, params, callback, callbackName) {
+        var query = (url||'').indexOf('?') === -1 ? '?' : '&', key;
 
-		callbackName = (callbackName||config['callbackName']||'callback');
-		var uniqueName = callbackName + "_json" + (++counter);
+        callbackName = (callbackName||config['callbackName']||'callback');
+        var uniqueName = callbackName + "_json" + (++counter);
 
-		params = params || {};
-		for ( key in params ) {
-			if ( params.hasOwnProperty(key) ) {
-				query += encode(key) + "=" + encode(params[key]) + "&";
-			}
-		}	
+        params = params || {};
+        for ( key in params ) {
+            if ( params.hasOwnProperty(key) ) {
+                query += encode(key) + "=" + encode(params[key]) + "&";
+            }
+        }    
 
-		window[ uniqueName ] = function(data){
-			callback(data);
-			try {
-				delete window[ uniqueName ];
-			} catch (e) {}
-			window[ uniqueName ] = null;
-		};
+        window[ uniqueName ] = function(data){
+            callback(data);
+            try {
+                delete window[ uniqueName ];
+            } catch (e) {}
+            window[ uniqueName ] = null;
+        };
  
-		load(url + query + callbackName + '=' + uniqueName);
-		return uniqueName;
-	}
-	function setDefaults(obj){
-		config = obj;
-	}
-	return {
-		get:jsonp,
-		init:setDefaults
-	};
+        load(url + query + callbackName + '=' + uniqueName);
+        return uniqueName;
+    }
+    function setDefaults(obj){
+        config = obj;
+    }
+    return {
+        get:jsonp,
+        init:setDefaults
+    };
 }());
 var wrap = function(tag, text, opts) {
-    wrapped = '<'+tag;
+    var wrapped = '<'+tag;
     if (opts) {
         for (opt in opts) {
             wrapped += ' '+opt+'="'+opts[opt]+'"';
@@ -88,9 +88,9 @@ var wrap = function(tag, text, opts) {
     return wrapped;
 };
 var message = function(msg) {
-    document.getElementById('forecast').innerHTML = msg;
+    var forecast = document.getElementById('forecast');
+    forecast.innerHTML = msg;
 };
-  
 (function() {
     var supports_liga = function() {
         var span = document.createElement('span');
