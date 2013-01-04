@@ -97,8 +97,8 @@ section[role=main] {
 .opentype .loading {
     display: inline-block;
     overflow: hidden;
-    width: 0.9999em;
-    height: 0.9999em;
+    width: 1.1em;
+    height: 1.1em;
     -webkit-animation: loading 1s linear 0s infinite;
 }
 @-webkit-keyframes loading {
