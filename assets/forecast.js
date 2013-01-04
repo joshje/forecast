@@ -179,7 +179,7 @@ if ('geolocation' in navigator && 'querySelector' in document) {
         if (!forecast) {
             forecast = json.data.weather[0].weatherDesc[0].value
         }
-        //message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast));
+        message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast));
         set_forecast_cache(json, lat, lon);
     };
     function forecast_error(err) {
