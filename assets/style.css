@@ -30,18 +30,9 @@ body {
     font-feature-settings: "liga";
 }
 .support {
-    font-family: Corbel;
     font-size: 100px;
     position: absolute;
     visibility: hidden;
-}
-.support.test {
-    -moz-font-feature-settings: 'tnum=1';
-    -webkit-font-feature-settings: 'tnum' 1;
-    -moz-font-feature-settings: 'tnum' 1;
-    -ms-font-feature-settings: 'tnum' 1;
-    -o-font-feature-settings: 'tnum' 1;
-    font-feature-settings: 'tnum' 1;
 }
 p {
     margin: 0.5em 0;
@@ -49,12 +40,12 @@ p {
 h1 {
     margin: 0 0 0.2em;
     padding: 0;
-    font-size: 3em;
+    font-size: 7em;
     line-height: 1;
     font-weight: normal;
 }
-.opentype h1 {
-    font-size: 7em;
+.no-liga h1 {
+    font-size: 4em;
 }
 a,
 a:link,
@@ -94,12 +85,18 @@ section[role=main] {
         font-size: 2.6667em;
     }
 }
-.opentype .loading {
+.loading {
     display: inline-block;
     overflow: hidden;
     width: 1.1em;
     height: 1.1em;
     -webkit-animation: loading 1s linear 0s infinite;
+}
+.no-liga .loading {
+    display: block;
+    width: auto;
+    height: auto;
+    overflow: visible;
 }
 @-webkit-keyframes loading {
     from {
