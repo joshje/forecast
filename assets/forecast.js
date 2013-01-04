@@ -102,6 +102,7 @@ var message = function(msg) {
         return (width < 100)? true : false;
     };
     setTimeout(function() {
+        document.getElementsByTagName('html')[0].className = '';
         if (!supports_liga()) {
             document.getElementsByTagName('html')[0].className += ' no-liga';
         }
