@@ -75,6 +75,18 @@ section[role=main] {
     font-size: 1.6667em;
     padding: 0 1em;
 }
+section,
+footer {
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+.fade section,
+.fade footer {
+    opacity: 0;
+}
 @media all and (min-width: 30em) {
     section[role=main] {
         font-size: 2em;
@@ -108,6 +120,10 @@ section[role=main] {
     height: 0.85em;
     line-height: 0.75;
     -webkit-animation: loading 1s linear 0s infinite;
+    -moz-animation: loading 1s linear 0s infinite;
+    -ms-animation: loading 1s linear 0s infinite;
+    -o-animation: loading 1s linear 0s infinite;
+    animation: loading 1s linear 0s infinite;
 }
 .no-liga .loading {
     display: block;
@@ -116,10 +132,22 @@ section[role=main] {
     overflow: visible;
 }
 @-webkit-keyframes loading {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-    }
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes loading {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+@-ms-keyframes loading {
+    from {-ms-transform: rotate(0deg);}
+    to {-ms-transform: rotate(360deg);}
+}
+@-o-keyframes loading {
+    from {-o-transform: rotate(0deg);}
+    to {-o-transform: rotate(360deg);}
+}
+@keyframes loading {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
 }
