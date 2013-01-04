@@ -92,20 +92,20 @@ var message = function(msg) {
     forecast.innerHTML = msg;
 };
 (function() {
-    var supports_liga = function() {
+    var supports_opentype = function() {
         var span = document.createElement('span');
         span.className = 'support';
-        span.innerHTML = 'Loading';
+        span.innerHTML = '1';
         document.getElementsByTagName('body')[0].appendChild(span);
-        var width = span.offsetWidth;
+        var startwidth = span.offsetWidth;
+        span.className += ' test';
+        var endwidth = span.offsetWidth;
         document.getElementsByTagName('body')[0].removeChild(span);
-        return (width < 100)? true : false;
+        return (startwidth != endwidth)? true : false;
     };
-    setTimeout(function() {
-        if (supports_liga()) {
-            document.getElementsByTagName('html')[0].className += ' liga';
-        }
-    }, 100);
+    if (supports_opentype()) {
+        document.getElementsByTagName('html')[0].className += ' opentype';
+    }
     
 })();
 if ('geolocation' in navigator && 'querySelector' in document) {
