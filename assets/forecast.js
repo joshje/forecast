@@ -108,6 +108,14 @@ var message = function(msg) {
     }, 100);
     
 })();
+(function() {
+    window.applicationCache.addEventListener('updateready', function(e) {
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+            window.applicationCache.swapCache();
+            window.location.reload();
+        }
+      }, false);
+})();
 if ('geolocation' in navigator && 'querySelector' in document) {
     function get_location() {
         message(wrap('p', 'Trying to find you&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));
@@ -162,11 +170,12 @@ if ('geolocation' in navigator && 'querySelector' in document) {
             'cc': 'no',
             'q': lat+','+lon,
             'format': 'json'
-        }, function(data) {
-            if (data.data.error) {
+        }, function(json) {
+            if (json.data.error) {
                 forecast_error()
             } else {
-                forecast_success(data, lat, lon);
+                set_forecast_cache(json, lat, lon);
+                forecast_success(json, lat, lon);
             }
         });
         timeout = setTimeout(function() {
@@ -180,7 +189,6 @@ if ('geolocation' in navigator && 'querySelector' in document) {
             forecast = json.data.weather[0].weatherDesc[0].value
         }
         message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast));
-        set_forecast_cache(json, lat, lon);
     };
     function forecast_error(err) {
         // AJAX request failed
