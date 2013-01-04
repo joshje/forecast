@@ -1051,7 +1051,8 @@ SplineSet
  880.5 1100 880.5 1100 853.5 1100 c 132,-1,134
  826.5 1100 826.5 1100 808.5 1118 c 6,121,-1
 EndSplineSet
-Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S u n n y slash C l o u d y
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" P a r t l y space C l o u d y
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" P a r t l y C l o u d y
 LCarets2: 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 EndChar
 
@@ -1881,8 +1882,9 @@ SplineSet
  1189.5 -22 1189.5 -22 1207 -4 c 132,-1,210
  1224.5 14 1224.5 14 1251.5 14 c 260,197,198
 EndSplineSet
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S c a t t e r e d S h o w e r s
 LCarets2: 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S h o w e r s
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S c a t t e r e d space S h o w e r s
 EndChar
 
 StartChar: uniE005
