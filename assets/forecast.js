@@ -92,29 +92,27 @@ var message = function(msg) {
     forecast.innerHTML = msg;
 };
 (function() {
-    var supports_liga = function() {
-        var span = document.createElement('span');
-        span.className = 'support';
-        span.innerHTML = 'Loading';
-        document.getElementsByTagName('body')[0].appendChild(span);
+    var count = 0,
+        span = document.createElement('span');
+    span.className = 'support';
+    span.innerHTML = 'Loading';
+    document.getElementsByTagName('body')[0].appendChild(span);
+    var test = setInterval(function() {
         var width = span.offsetWidth;
-        document.getElementsByTagName('body')[0].removeChild(span);
-        return (width < 100)? true : false;
-    };
-    setTimeout(function() {
-        document.getElementsByTagName('html')[0].className = '';
-        if (!supports_liga()) {
-            document.getElementsByTagName('html')[0].className += ' no-liga';
+        if (width < 100) {
+            clearInterval(test);
+            document.getElementsByTagName('html')[0].className = ''
+        } else if (++count >= 10) {
+            clearInterval(test);
+            document.getElementsByTagName('html')[0].className = 'no-liga';        
         }
-    }, 100);
+    }, 50);
     
 })();
 (function() {
     window.applicationCache.addEventListener('updateready', function(e) {
-        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-            window.applicationCache.swapCache();
-            window.location.reload();
-        }
+        window.applicationCache.swapCache();
+        window.location.reload();
       }, false);
 })();
 if ('geolocation' in navigator && 'querySelector' in document) {
