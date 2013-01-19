@@ -162,10 +162,10 @@ if ('geolocation' in navigator && 'querySelector' in document) {
         }
     }
     function get_forecast_ajax(lat, lon) {
-        message(wrap('p', 'Looking at the sky&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));  
+        message(wrap('p', 'Looking at the sky&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));
         JSONP.get('http://free.worldweatheronline.com/feed/weather.ashx', {
             'key': api_key,
-            'date': 'tomorrow',
+            'date': date_tomorrow(),
             'cc': 'no',
             'q': lat+','+lon,
             'format': 'json'
@@ -201,6 +201,13 @@ if ('geolocation' in navigator && 'querySelector' in document) {
                 }
             }
         }
+    }
+    function date_tomorrow() {
+        var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000),
+            y = tomorrow.getFullYear().toString(),
+            m = (tomorrow.getMonth()+1).toString(),
+            d  = tomorrow.getDate().toString();
+        return y + '-' + (m[1]?m:"0"+m[0]) + '-' + (d[1]?d:"0"+d[0]);
     }
     // Refresh the forecast
     addEvent(document.getElementsByTagName('body')[0], 'click', function(e) {
