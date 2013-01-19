@@ -14,14 +14,13 @@ sfntRevision: 0x00000042
 LayerCount: 2
 Layer: 0 1 "Back"  1
 Layer: 1 1 "Fore"  0
-NeedsXUIDChange: 1
 XUID: [1021 13 1787294134 15468677]
 FSType: 0
 OS2Version: 3
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1336179544
-ModificationTime: 1357037508
+ModificationTime: 1357236292
 PfmFamily: 81
 TTFWeight: 400
 TTFWidth: 5
@@ -540,7 +539,7 @@ FitToEm: 1
 WinInfo: 0 17 12
 BeginPrivate: 0
 EndPrivate
-BeginChars: 96 96
+BeginChars: 97 97
 
 StartChar: uniE004
 Encoding: 85 57348 0
@@ -739,8 +738,8 @@ Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" C
 LCarets2: 5 0 0 0 0 0 
 EndChar
 
-StartChar: uniE001
-Encoding: 82 57345 1
+StartChar: uniE00A
+Encoding: 82 57354 1
 Width: 2007
 Flags: W
 TtInstrs:
@@ -1052,7 +1051,8 @@ SplineSet
  880.5 1100 880.5 1100 853.5 1100 c 132,-1,134
  826.5 1100 826.5 1100 808.5 1118 c 6,121,-1
 EndSplineSet
-Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" P a r t i a l l y space C l o u d y
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" P a r t l y space C l o u d y
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" P a r t l y C l o u d y
 LCarets2: 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 EndChar
 
@@ -1882,8 +1882,9 @@ SplineSet
  1189.5 -22 1189.5 -22 1207 -4 c 132,-1,210
  1224.5 14 1224.5 14 1251.5 14 c 260,197,198
 EndSplineSet
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S c a t t e r e d S h o w e r s
 LCarets2: 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S c a t t e r e d space s h o w e r s
+Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" S c a t t e r e d space S h o w e r s
 EndChar
 
 StartChar: uniE005
@@ -3623,8 +3624,8 @@ EndSplineSet
 Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" T h u n d e r y
 EndChar
 
-StartChar: uniE00A
-Encoding: 90 57354 9
+StartChar: uniE001
+Encoding: 90 57345 9
 Width: 1812
 Flags: W
 TtInstrs:
@@ -23279,7 +23280,7 @@ EndChar
 StartChar: uniE00D
 Encoding: 95 57357 95
 Width: 1177
-Flags: HWO
+Flags: W
 LayerCount: 2
 Fore
 SplineSet
@@ -23349,6 +23350,74 @@ SplineSet
 EndSplineSet
 LCarets2: 6 0 0 0 0 0 0 
 Ligature2: "Lato-Regular-'liga' Standard Ligatures in Latin lookup 1 subtable" L o a d i n g
+EndChar
+
+StartChar: slash
+Encoding: 96 47 96
+Width: 746
+VWidth: 2000
+Flags: W
+TtInstrs:
+NPUSHB
+ 6
+ 9
+ 7
+ 4
+ 2
+ 2
+ 7
+CALL
+MPPEM
+PUSHB_1
+ 141
+LT
+IF
+NPUSHB
+ 12
+ 0
+ 0
+ 1
+ 0
+ 53
+ 0
+ 1
+ 1
+ 13
+ 1
+ 32
+ 2
+ELSE
+NPUSHB
+ 10
+ 0
+ 1
+ 0
+ 1
+ 52
+ 0
+ 0
+ 0
+ 43
+ 2
+EIF
+PUSHB_1
+ 56
+CALL
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+161 -21 m 2,0,1
+ 147 -56 147 -56 119.5 -73 c 128,-1,2
+ 92 -90 92 -90 63 -90 c 2,3,-1
+ -12 -90 l 1,4,-1
+ 589 1407 l 2,5,6
+ 602 1439 602 1439 626 1456 c 128,-1,7
+ 650 1473 650 1473 683 1473 c 2,8,-1
+ 758 1473 l 1,9,-1
+ 161 -21 l 2,0,1
+EndSplineSet
+Kerns2: 96 -136 "Lato-Regular-'kern' Horizontal Kerning in Latin lookup 0 subtable" 
 EndChar
 EndChars
 EndSplineFont

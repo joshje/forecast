@@ -2,83 +2,83 @@ var api_key = 'API_KEY_HERE',
     timeout,
     weather_types = {
         'Sunny': [113],
-        'Partly Cloudy': [116],
-        'Cloudy': [119,122],
-        'Foggy': [143,248,260],
-        'Scattered Showers': [176,185,263,293,299],
-        'Rainy': [266,281,284,296,302,305,308,311,314,3177,320,353,356,359,362,365],
-        'Snowy': [179,182,227,230,323,326,329,332,335,338,368,371],
-        'Hail': [350,374,377],
-        'Thundery': [200,386,389,392,395],
-    }
+        'PartlyCloudy': [116],
+        'Cloudy': [119, 122],
+        'Foggy': [143, 248, 260],
+        'ScatteredShowers': [176, 185, 263, 293, 299],
+        'Rainy': [266, 281, 284, 296, 302, 305, 308, 311, 314, 317, 320, 353, 356, 359, 362, 365],
+        'Snowy': [179, 182, 227, 230, 323, 326, 329, 332, 335, 338, 368, 371],
+        'Hail': [350, 374, 377],
+        'Thundery': [200, 386, 389, 392, 395]
+    };
 var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
 var JSONP = (function(){
-	var counter = 0, head, window = this, config = {};
-	function load(url, pfnError) {
-		var script = document.createElement('script'),
-			done = false;
-		script.src = url;
-		script.async = true;
+    var counter = 0, head, window = this, config = {};
+    function load(url, pfnError) {
+        var script = document.createElement('script'),
+            done = false;
+        script.src = url;
+        script.async = true;
  
-		var errorHandler = pfnError || config.error;
-		if ( typeof errorHandler === 'function' ) {
-			script.onerror = function(ex){
-				errorHandler({url: url, event: ex});
-			};
-		}
+        var errorHandler = pfnError || config.error;
+        if ( typeof errorHandler === 'function' ) {
+            script.onerror = function(ex){
+                errorHandler({url: url, event: ex});
+            };
+        }
 
-		script.onload = script.onreadystatechange = function() {
-			if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
-				done = true;
-				script.onload = script.onreadystatechange = null;
-				if ( script && script.parentNode ) {
-					script.parentNode.removeChild( script );
-				}
-			}
-		};
+        script.onload = script.onreadystatechange = function() {
+            if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+                done = true;
+                script.onload = script.onreadystatechange = null;
+                if ( script && script.parentNode ) {
+                    script.parentNode.removeChild( script );
+                }
+            }
+        };
 
-		if ( !head ) {
-			head = document.getElementsByTagName('head')[0];
-		}
-		head.appendChild( script );
-	}
-	function encode(str) {
-		return encodeURIComponent(str);
-	}
-	function jsonp(url, params, callback, callbackName) {
-		var query = (url||'').indexOf('?') === -1 ? '?' : '&', key;
+        if ( !head ) {
+            head = document.getElementsByTagName('head')[0];
+        }
+        head.appendChild( script );
+    }
+    function encode(str) {
+        return encodeURIComponent(str);
+    }
+    function jsonp(url, params, callback, callbackName) {
+        var query = (url||'').indexOf('?') === -1 ? '?' : '&', key;
 
-		callbackName = (callbackName||config['callbackName']||'callback');
-		var uniqueName = callbackName + "_json" + (++counter);
+        callbackName = (callbackName||config['callbackName']||'callback');
+        var uniqueName = callbackName + "_json" + (++counter);
 
-		params = params || {};
-		for ( key in params ) {
-			if ( params.hasOwnProperty(key) ) {
-				query += encode(key) + "=" + encode(params[key]) + "&";
-			}
-		}	
+        params = params || {};
+        for ( key in params ) {
+            if ( params.hasOwnProperty(key) ) {
+                query += encode(key) + "=" + encode(params[key]) + "&";
+            }
+        }    
 
-		window[ uniqueName ] = function(data){
-			callback(data);
-			try {
-				delete window[ uniqueName ];
-			} catch (e) {}
-			window[ uniqueName ] = null;
-		};
+        window[ uniqueName ] = function(data){
+            callback(data);
+            try {
+                delete window[ uniqueName ];
+            } catch (e) {}
+            window[ uniqueName ] = null;
+        };
  
-		load(url + query + callbackName + '=' + uniqueName);
-		return uniqueName;
-	}
-	function setDefaults(obj){
-		config = obj;
-	}
-	return {
-		get:jsonp,
-		init:setDefaults
-	};
+        load(url + query + callbackName + '=' + uniqueName);
+        return uniqueName;
+    }
+    function setDefaults(obj){
+        config = obj;
+    }
+    return {
+        get:jsonp,
+        init:setDefaults
+    };
 }());
 var wrap = function(tag, text, opts) {
-    wrapped = '<'+tag;
+    var wrapped = '<'+tag;
     if (opts) {
         for (opt in opts) {
             wrapped += ' '+opt+'="'+opts[opt]+'"';
@@ -88,9 +88,33 @@ var wrap = function(tag, text, opts) {
     return wrapped;
 };
 var message = function(msg) {
-    document.getElementById('forecast').innerHTML = msg;
+    var forecast = document.getElementById('forecast');
+    forecast.innerHTML = msg;
 };
-  
+(function() {
+    var count = 0,
+        span = document.createElement('span');
+    span.className = 'support';
+    span.innerHTML = 'Loading';
+    document.getElementsByTagName('body')[0].appendChild(span);
+    var test = setInterval(function() {
+        var width = span.offsetWidth;
+        if (width < 100) {
+            clearInterval(test);
+            document.getElementsByTagName('html')[0].className = ''
+        } else if (++count >= 10) {
+            clearInterval(test);
+            document.getElementsByTagName('html')[0].className = 'no-liga';        
+        }
+    }, 50);
+    
+})();
+(function() {
+    window.applicationCache.addEventListener('updateready', function(e) {
+        window.applicationCache.swapCache();
+        window.location.reload();
+      }, false);
+})();
 if ('geolocation' in navigator && 'querySelector' in document) {
     function get_location() {
         message(wrap('p', 'Trying to find you&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));
@@ -138,18 +162,19 @@ if ('geolocation' in navigator && 'querySelector' in document) {
         }
     }
     function get_forecast_ajax(lat, lon) {
-        message(wrap('p', 'Looking at the sky&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));  
+        message(wrap('p', 'Looking at the sky&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));
         JSONP.get('http://free.worldweatheronline.com/feed/weather.ashx', {
             'key': api_key,
-            'date': 'tomorrow',
+            'date': date_tomorrow(),
             'cc': 'no',
             'q': lat+','+lon,
             'format': 'json'
-        }, function(data) {
-            if (data.data.error) {
+        }, function(json) {
+            if (json.data.error) {
                 forecast_error()
             } else {
-                forecast_success(data, lat, lon);
+                set_forecast_cache(json, lat, lon);
+                forecast_success(json, lat, lon);
             }
         });
         timeout = setTimeout(function() {
@@ -163,7 +188,6 @@ if ('geolocation' in navigator && 'querySelector' in document) {
             forecast = json.data.weather[0].weatherDesc[0].value
         }
         message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast));
-        set_forecast_cache(json, lat, lon);
     };
     function forecast_error(err) {
         // AJAX request failed
@@ -177,6 +201,13 @@ if ('geolocation' in navigator && 'querySelector' in document) {
                 }
             }
         }
+    }
+    function date_tomorrow() {
+        var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000),
+            y = tomorrow.getFullYear().toString(),
+            m = (tomorrow.getMonth()+1).toString(),
+            d  = tomorrow.getDate().toString();
+        return y + '-' + (m[1]?m:"0"+m[0]) + '-' + (d[1]?d:"0"+d[0]);
     }
     // Refresh the forecast
     addEvent(document.getElementsByTagName('body')[0], 'click', function(e) {

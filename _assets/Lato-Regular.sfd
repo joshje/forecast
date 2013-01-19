@@ -58,6 +58,7 @@ Lookup: 1 0 0 "'case' Case-Sensitive Forms in Latin lookup 0"  {"'case' Case-Sen
 Lookup: 4 0 1 "'liga' Standard Ligatures in Latin lookup 1"  {"'liga' Standard Ligatures in Latin lookup 1 subtable"  } ['liga' ('DFLT' <'dflt' > 'latn' <'dflt' > ) ]
 Lookup: 1 0 0 "'sups' Superscript in Latin lookup 2"  {"'sups' Superscript in Latin lookup 2 subtable" ("superior" ) } ['sups' ('DFLT' <'dflt' > 'latn' <'dflt' > ) ]
 Lookup: 258 0 0 "'kern' Horizontal Kerning in Latin lookup 0"  {"'kern' Horizontal Kerning in Latin lookup 0 subtable"  } ['kern' ('DFLT' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 258 0 0 "Lato-Regular-'kern' Horizontal Kerning in Latin lookup 0"  {"Lato-Regular-'kern' Horizontal Kerning in Latin lookup 0 subtable"  } ['kern' ('DFLT' <'dflt' > 'latn' <'dflt' > ) ]
 DEI: 91125
 TtTable: prep
 PUSHW_2
@@ -1954,7 +1955,7 @@ DisplaySize: -36
 AntiAlias: 1
 FitToEm: 1
 WinInfo: 0 17 12
-BeginChars: 65550 83
+BeginChars: 65550 84
 
 StartChar: space
 Encoding: 32 32 0
@@ -20757,6 +20758,73 @@ SplineSet
  186 0 l 1,0,-1
 EndSplineSet
 Ligature2: "'liga' Standard Ligatures in Latin lookup 1 subtable" f l
+EndChar
+
+StartChar: slash
+Encoding: 47 47 83
+Width: 746
+Flags: W
+TtInstrs:
+NPUSHB
+ 6
+ 9
+ 7
+ 4
+ 2
+ 2
+ 7
+CALL
+MPPEM
+PUSHB_1
+ 141
+LT
+IF
+NPUSHB
+ 12
+ 0
+ 0
+ 1
+ 0
+ 53
+ 0
+ 1
+ 1
+ 13
+ 1
+ 32
+ 2
+ELSE
+NPUSHB
+ 10
+ 0
+ 1
+ 0
+ 1
+ 52
+ 0
+ 0
+ 0
+ 43
+ 2
+EIF
+PUSHB_1
+ 56
+CALL
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+161 -21 m 2,0,1
+ 147 -56 147 -56 119.5 -73 c 128,-1,2
+ 92 -90 92 -90 63 -90 c 2,3,-1
+ -12 -90 l 1,4,-1
+ 589 1407 l 2,5,6
+ 602 1439 602 1439 626 1456 c 128,-1,7
+ 650 1473 650 1473 683 1473 c 2,8,-1
+ 758 1473 l 1,9,-1
+ 161 -21 l 2,0,1
+EndSplineSet
+Kerns2: 83 -136 "Lato-Regular-'kern' Horizontal Kerning in Latin lookup 0 subtable" 
 EndChar
 EndChars
 EndSplineFont

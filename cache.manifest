@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# 2012-01-19:v1
+
+CACHE:
+index.html
+assets/favicon.ico
+assets/style.css
+assets/forecast.min.js
+
+NETWORK:
+*
+
+FALLBACK:
+/ 404.html
