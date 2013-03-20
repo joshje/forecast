@@ -101,10 +101,10 @@ var message = function(msg) {
         var width = span.offsetWidth;
         if (width < 100) {
             clearInterval(test);
-            document.getElementsByTagName('html')[0].className = ''
+            document.getElementsByTagName('html')[0].className = 'js'
         } else if (++count >= 10) {
             clearInterval(test);
-            document.getElementsByTagName('html')[0].className = 'no-liga';        
+            document.getElementsByTagName('html')[0].className = 'js no-liga';        
         }
     }, 50);
     
@@ -222,6 +222,22 @@ if ('geolocation' in navigator && 'querySelector' in document) {
     // Browser doesn't have GeoLocation
     message(wrap('p', 'Drat. We can&rsquo;t find you.') + wrap('p', 'You might need a <a href="http://www.google.com/chrome">modern browser</a>'));
 }
+
+(function() {
+    var footer = document.getElementsByTagName('footer')[0],
+        footerReveal = document.createElement('a');
+    footer.className += ' toggle';
+    footerReveal.innerHTML = 'information';
+    footerReveal.className = 'footer-reveal';
+    footerReveal.href = '#';
+    addEvent(footerReveal, 'click', function(e) {
+        footer.style.height = 'auto';
+        footer.style.opacity = 1;
+        footerReveal.style.opacity = 0;
+        e.preventDefault();
+    });
+    footer.parentNode.insertBefore(footerReveal, footer);
+})();
 
 // Google Analytics
 var _gaq = _gaq || [];
