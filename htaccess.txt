@@ -1,0 +1,2 @@
+# Example .htaccess file
+ErrorDocument 404 /404.html
