@@ -17,8 +17,12 @@ document.getElementsByTagName('html')[0].className += ' fade';
 </head>
 <body>
 <section role="main" id="forecast">
-    <h1>Uh Oh!</h1>
-    <noscript><p>We need JavaScript to do some fancy stuff.</p></noscript>
+    <noscript>
+        <form action="http://www.bbc.co.uk/weather/">
+            <label for="search">Find the forecast for:</label>
+            <input type="text" id="search" name="search" placeholder="e.g. Brighton, BN1">
+            <input type="submit" value="Search">
+    </noscript>
 </section>
 <footer>
     <p>Made&nbsp;by&nbsp;<a href="http://joshemerson.co.uk">Josh Emerson</a>, Source&nbsp;code&nbsp;on&nbsp;<a href="http://github.com/joshje/forecast">GitHub</a></p>
