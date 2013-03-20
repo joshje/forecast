@@ -1,11 +1,10 @@
 CACHE MANIFEST
-# 2012-01-19:v1
+# 2013-03-20:v1
 
 CACHE:
 index.html
 assets/favicon.ico
 assets/style.css
-assets/forecast.min.js
 
 NETWORK:
 *

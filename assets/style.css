@@ -48,6 +48,33 @@ h1 {
 .no-liga h1 {
     font-size: 4em;
 }
+input {
+    display: block;
+    font-size: inherit;
+    font-family: inherit;
+    margin: 0.5em auto;
+    padding: 0.25em 0.5em 0.15em;
+    line-height: 1;
+    background: #FFF;
+    border: 1px solid #555;
+    border-radius: 0.25em;
+    text-align: center;
+}
+input:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+input[type=submit] {
+    background: #555;
+    border: 1px solid #555;
+    color: #FCFCFC;
+}
+input[type=submit]:hover,
+input[type=submit]:focus {
+    background: #888;
+    cursor: pointer;
+}
 a,
 a:link,
 a:active,
