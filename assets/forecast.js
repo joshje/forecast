@@ -163,7 +163,7 @@ if ('geolocation' in navigator && 'querySelector' in document) {
     }
     function get_forecast_ajax(lat, lon) {
         message(wrap('p', 'Looking at the sky&hellip;')+wrap('h1', 'Loading', {'class': 'loading'}));
-        JSONP.get('http://free.worldweatheronline.com/feed/weather.ashx', {
+        JSONP.get('http://api.worldweatheronline.com/free/v1/weather.ashx', {
             'key': api_key,
             'date': date_tomorrow(),
             'cc': 'no',
