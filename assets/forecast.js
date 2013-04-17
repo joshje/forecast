@@ -110,10 +110,12 @@ var message = function(msg) {
     
 })();
 (function() {
-    window.applicationCache.addEventListener('updateready', function(e) {
-        window.applicationCache.swapCache();
-        window.location.reload();
-      }, false);
+    if (window.applicationCache && typeof window.applicationCache.addEventListender === "function" {
+        window.applicationCache.addEventListener('updateready', function(e) {
+            window.applicationCache.swapCache();
+            window.location.reload();
+          }, false);
+    }
 })();
 if ('geolocation' in navigator && 'querySelector' in document) {
     function get_location() {
