@@ -110,7 +110,7 @@ var message = function(msg) {
     
 })();
 (function() {
-    if (window.applicationCache && typeof window.applicationCache.addEventListender == "function") {
+    if (window.applicationCache) {
         window.applicationCache.addEventListener('updateready', function(e) {
             window.applicationCache.swapCache();
             window.location.reload();
