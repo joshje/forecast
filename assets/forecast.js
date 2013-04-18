@@ -1,4 +1,4 @@
-var api_key = 'API_KEY_HERE',
+var api_key = '9xtjv74bqu88hr83ektt75g8',
     timeout,
     weather_types = {
         'Sunny': [113],
