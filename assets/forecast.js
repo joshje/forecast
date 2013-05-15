@@ -189,7 +189,9 @@ if ('geolocation' in navigator && 'querySelector' in document) {
         if (!forecast) {
             forecast = json.data.weather[0].weatherDesc[0].value
         }
-        message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast));
+        message(wrap('p', 'Tomorrow&rsquo;s forecast is') + wrap('h1', forecast, {
+            'data-tooltip': forecast
+        }));
     };
     function forecast_error(err) {
         // AJAX request failed

@@ -39,6 +39,7 @@ p {
     margin: 0.5em 0;
 }
 h1 {
+    display: inline-block;
     margin: 0 0 0.2em;
     padding: 0;
     font-size: 7em;
@@ -163,6 +164,42 @@ footer,
     h1 {
         font-size: 6em;
     }
+}
+[data-tooltip] {
+    position: relative;
+}
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    display: block;
+    position: absolute;
+    top: 10em;
+    left: 50%;
+    font-size: 0.1em;
+    background: #555;
+    color: #FCFCFC;
+    width: 6em;
+    padding: 0.25em 0.125em 0.125em;
+    margin-left: -3.15em;
+    border-radius: 0.25em;
+    opacity: 0;
+    -webkit-font-feature-settings: "liga" 0;
+    -moz-font-feature-settings: "liga" 0;
+    -ms-font-feature-settings: "liga" 0;
+    -o-font-feature-settings: "liga" 0;
+    font-feature-settings: "liga" 0;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+[data-tooltip]:hover:before {
+    opacity: 1;
+    -webkit-transition-delay: 2s;
+    -moz-transition-delay: 2s;
+    -ms-transition-delay: 2s;
+    -o-transition-delay: 2s;
+    transition-delay: 2s;
 }
 .loading {
     display: inline-block;
